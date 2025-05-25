@@ -41,7 +41,7 @@ export function StoriesBar({ stories, onCreateStory, onViewStory }: StoriesBarPr
                 <Avatar className="h-16 w-16 ring-2 ring-dashed ring-primary">
                   <AvatarImage src={user?.photoURL || ""} alt={user?.name} />
                   <AvatarFallback>
-                    {user?.name?.charAt(0).toUpperCase()}
+                    {user?.name?.charAt(0)?.toUpperCase() || 'U'}
                   </AvatarFallback>
                 </Avatar>
                 <div className="absolute bottom-0 right-0 bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center">
