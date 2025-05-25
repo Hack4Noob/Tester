@@ -421,7 +421,7 @@ export default function Home() {
                         <div className="relative">
                           <Avatar className="h-8 w-8">
                             <AvatarImage src={user.photoURL || ""} />
-                            <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                            <AvatarFallback>{user.name?.charAt(0) || 'U'}</AvatarFallback>
                           </Avatar>
                           <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
                         </div>
