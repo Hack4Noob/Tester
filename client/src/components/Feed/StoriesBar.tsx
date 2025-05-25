@@ -65,9 +65,9 @@ export function StoriesBar({ stories, onCreateStory, onViewStory }: StoriesBarPr
                   <div className="p-1 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600">
                     <div className="p-1 bg-white rounded-full">
                       <Avatar className="h-14 w-14">
-                        <AvatarImage src={story.author.photoURL} alt={story.author.name} />
+                        <AvatarImage src={story.author.photoURL || ""} alt={story.author.name} />
                         <AvatarFallback>
-                          {story.author.name.charAt(0).toUpperCase()}
+                          {story.author.name?.charAt(0)?.toUpperCase() || 'U'}
                         </AvatarFallback>
                       </Avatar>
                     </div>

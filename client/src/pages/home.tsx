@@ -93,6 +93,9 @@ export default function Home() {
         } as Post;
       });
       setPosts(postsData);
+    }, (error) => {
+      console.error("Erro ao carregar posts:", error);
+      setPosts([]);
     });
 
     return unsubscribe;
@@ -117,6 +120,9 @@ export default function Home() {
         } as Story;
       });
       setStories(storiesData);
+    }, (error) => {
+      console.error("Erro ao carregar stories:", error);
+      setStories([]);
     });
 
     return unsubscribe;
