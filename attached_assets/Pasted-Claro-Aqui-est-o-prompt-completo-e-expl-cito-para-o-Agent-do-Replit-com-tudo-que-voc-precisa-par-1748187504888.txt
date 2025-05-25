@@ -1,0 +1,383 @@
+Claro! Aqui está o prompt completo e explícito para o Agent do Replit, com tudo que você precisa para uma rede social real e funcional, sem mockups ou simulações. O fluxo está bem detalhado e todos os arquivos além dos que você já tem (cadastro.html, sucesso.html, login.html, home.html) devem ser criados no mesmo estilo.
+
+
+---
+
+PROMPT PARA O AGENT REPLIT – REDE SOCIAL COMPLETA
+
+Olá, Replit Agent!
+
+Estou desenvolvendo um app estilo rede social, e preciso que você organize um fluxo real e funcional, com base no que já tenho, e crie o que estiver faltando, mantendo o visual atual.
+
+
+---
+
+TECNOLOGIAS EM USO
+
+Firebase Authentication + Firestore
+
+Cloudinary (vimbalambi_preset para imagens e stories_preset para vídeos/stories)
+
+Deezer API (música nos posts e stories)
+
+APIs públicas reais para cada categoria
+
+Fabric.js + HTML5 Canvas (editor de stories)
+
+HTML, CSS, JS puros (sem frameworks ou backend)
+
+
+
+---
+
+DADOS DE CONFIGURAÇÃO
+
+Cloudinary:
+
+API Key: 923118916786949
+
+API Secret: C79PVgBThffBpH3iOAMtDYRJ6t4
+
+Endpoint: https://api.cloudinary.com/v1_1/Estanislau/image/upload
+
+Upload Presets:
+
+vimbalambi_preset (posts, perfil, grupos)
+
+stories_preset (vídeos ou imagens do story)
+
+
+
+Firebase:
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAP3Sy1PB0m_EpKifOpUd7tc1_eAKF2alM",
+  authDomain: "vimbalambi-news.firebaseapp.com",
+  databaseURL: "https://vimbalambi-news-default-rtdb.firebaseio.com",
+  projectId: "vimbalambi-news",
+  storageBucket: "vimbalambi-news.appspot.com",
+  messagingSenderId: "212254517932",
+  appId: "1:212254517932:web:d061c943f90b4c4e204d09"
+};
+
+
+---
+
+ARQUIVOS JÁ EXISTENTES
+
+Estes arquivos já existem e devem ser mantidos como estão:
+
+cadastro.html / css / js
+
+sucesso.html / css / js
+
+login.html / css / js
+
+home.html / css / js
+
+
+O restante, você deve criar com o mesmo estilo visual.
+
+
+---
+
+FLUXO COMPLETO DO APP
+
+1. index.html – Tela Inicial
+
+Opções: "Entrar" (login.html) ou "Criar Conta" (cadastro.html)
+
+
+
+---
+
+2. cadastro.html
+
+Multi-etapas estilo Facebook:
+
+Etapa 1: nome, sobrenome, gênero, data de nascimento
+
+Etapa 2: e-mail/senha (Firebase Auth)
+
+Etapa 3: foto de perfil (opcional, Cloudinary)
+
+
+Dados salvos no Firestore
+
+Redireciona para sucesso.html
+
+
+
+---
+
+3. sucesso.html
+
+Mostra os dados cadastrados com animações
+
+Botão: “Ir para login” (login.html)
+
+
+
+---
+
+4. login.html
+
+Login via Firebase Auth
+
+Ao sucesso: som suave, confetes, redireciona para home.html
+
+
+
+---
+
+5. home.html – Página Principal (Estilo Instagram com cores do Facebook)
+
+Componentes:
+
+Feed de Posts:
+
+Texto + imagem/vídeo + música opcional (Cloudinary + Deezer preview)
+
+Curtidas (reais, em tempo real), comentários, partilhas
+
+Upload de imagem, vídeo, música
+
+
+Stories:
+
+Barra no topo
+
+Stories em tela cheia
+
+Views (salvas no Firestore, visíveis apenas ao autor)
+
+Reações e respostas
+
+
+Grupos Públicos:
+
+Página dedicada: grupos.html
+
+Criação de grupos com avatar (Cloudinary)
+
+Posts abertos por membros
+
+
+Mensagens Privadas e Grupos de Chat:
+
+Página: mensagens.html
+
+Sistema 1 a 1 (Firestore)
+
+Grupos de chat
+
+Envio de texto, áudio, vídeo, documentos (todos via Cloudinary)
+
+Suporte a chamadas de voz e vídeo (WebRTC)
+
+
+Editor de Stories:
+
+Página: editor.html
+
+Upload de imagem de fundo
+
+Drag & Drop de texto, stickers, emojis
+
+Música (via Deezer API – 30s)
+
+Geração de vídeo (HTML5 Canvas)
+
+Upload no Cloudinary (stories_preset)
+
+
+Menu Inferior Fixo com Ícones:
+
+Início | Modalidades | Eventos | Grupos | Mensagens | Perfil/Logout
+
+
+
+
+---
+
+6. modalidades.html – Categorias com APIs Reais
+
+Cada categoria deve ter 3 APIs públicas reais com conteúdo dinâmico:
+
+Categorias:
+
+Geek:
+
+Anime: MangaDex API
+
+Filmes: OMDb API
+
+Jogos: RAWG API
+
+
+Desporto:
+
+Esportes: TheSportsDB
+
+Futebol: API-Football
+
+Basquete: balldontlie
+
+
+Música:
+
+Deezer API
+
+Last.fm API
+
+Genius API
+
+
+Matemática:
+
+https://api.calculadora-simple.com
+
+Numbers API
+
+Math.js API
+
+
+Saúde/Natureza/Ciência:
+
+NASA API
+
+OpenWeatherMap
+
+Health.gov APIs
+
+
+
+
+---
+
+7. perfil.html – Página do Usuário
+
+Dados do usuário
+
+Posts próprios
+
+Stories enviados
+
+Botões: editar perfil, sair
+
+
+
+---
+
+8. editor.html – Editor de Stories
+
+Upload de imagem
+
+Inserção de texto, emojis, stickers
+
+Música (Deezer preview de 30s)
+
+Geração de vídeo com HTML5 Canvas
+
+Upload no Cloudinary (stories_preset)
+
+Salvamento no Firestore: link, uid, timestamp
+
+Visualização do story final
+
+
+
+---
+
+9. grupos.html
+
+Criar grupo (nome, imagem via Cloudinary)
+
+Postagens públicas dentro de grupos
+
+Curtir, comentar, partilhar
+
+
+
+---
+
+10. mensagens.html
+
+Lista de chats e grupos
+
+Conversa em tempo real (texto, áudio, imagem, vídeo, documento)
+
+Enviar arquivo (usando Cloudinary)
+
+Chamadas de voz/vídeo via WebRTC
+
+Apenas usuários logados podem acessar
+
+
+
+---
+
+11. logout.js
+
+Faz logout do Firebase
+
+Redireciona para login.html
+
+
+
+---
+
+FUNCIONALIDADES ESSENCIAIS
+
+Cadastro/login com autenticação real
+
+Feed funcional com curtidas/comentários/partilha
+
+Upload real de arquivos com Cloudinary
+
+Stories reais com editor
+
+Grupos públicos
+
+Mensagens privadas e grupos com envio de arquivos
+
+Chamadas de voz/vídeo (WebRTC)
+
+APIs reais em todas categorias
+
+Música nos posts/stories (Deezer preview 30s)
+
+Navegação protegida: somente usuários logados acessam home.html, editor.html, mensagens.html, etc.
+
+
+
+---
+
+REQUISITOS FINAIS
+
+Visual: manter o estilo atual dos arquivos existentes
+
+Responsividade: deve funcionar no navegador e no Replit
+
+Scripts/CSS: modularizar se necessário, mas sem mudar visual
+
+Sem simulações: tudo deve funcionar de verdade
+
+Usabilidade: animações suaves, UX agradável
+
+Segurança: bloquear acesso a páginas privadas sem login
+
+
+
+---
+
+Pronto, Agent! Agora é contigo. Conecta tudo isso, crie os arquivos que faltam e garanta o funcionamento completo da rede social.
+
+Obrigado!
+Assinado: Estanislau Manda – Vimbalambi News ✨
+
+
+---
+
+Se quiser, posso te gerar um .zip inicial com base nisso ou te ajudar a dividir os arquivos. É só pedir!
+

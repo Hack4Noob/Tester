@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cadastro Concluído - VIMBALAMBI NEWS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <link rel="stylesheet" href="css/sucesso.css">
+</head>
+<body>
+  <div class="container">
+    <img src="assets/logo.png" alt="Logo" class="logo" />
+    <h1>VIMBALAMBI NEWS</h1>
+    <div class="title-separator"></div>
+    <div class="success-check">
+      <i class="fas fa-check-circle"></i>
+    </div>
+
+    <div class="profile-container">
+      <img id="profilePhoto" class="profile-photo" src="" alt="Foto de Perfil" />
+      <div class="profile-badge">
+        <i class="fas fa-check"></i>
+      </div>
+    </div>
+
+    <div class="info-container">
+      <div class="info-item">
+        <i class="fas fa-user-tag"></i>
+        <span id="fullName"></span>
+      </div>
+      
+      <div class="separator"></div>
+      
+      <div class="info-item">
+        <i class="fas fa-envelope"></i>
+        <span id="email"></span>
+      </div>
+      
+      <div class="separator"></div>
+      
+      <div class="info-item">
+        <i class="fas fa-birthday-cake"></i>
+        <span id="birthDate"></span>
+      </div>
+      
+      <div class="separator"></div>
+      
+      <div class="info-item">
+        <i class="fas fa-venus-mars"></i>
+        <span id="gender"></span>
+      </div>
+    </div>
+
+    <div class="buttons-container" id="buttonsContainer">
+      <button class="btn-edit" onclick="editarDados()">
+        <i class="fas fa-user-edit"></i> Editar Dados
+      </button>
+      <button class="btn-login" onclick="window.location.href='login.html'">
+        <i class="fas fa-sign-in-alt"></i> Ir para Login
+      </button>
+    </div>
+  </div>
+  
+  <div id="confetti" class="confetti"></div>
+  <script src="js/sucesso.js"></script>
+</body>
+</html>

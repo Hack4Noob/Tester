@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Vimbalambi News</title>
+  <!-- Link para o Font Awesome para os ícones -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+  <!-- Link para o Canvas Confetti (animação de confetes) -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <!-- Link para o arquivo de estilos CSS -->
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+
+<body>
+  <!-- Conteúdo principal da página de login -->
+  <div class="login-container">
+    <div class="line-animation" id="topLine"></div>
+    <img src="assets/logo.png" alt="logo" class="logo" />
+    <h2>VIMBALAMBI NEWS</h2>
+    <h2>Login</h2>
+
+    <div class="input-group">
+      <i class="fas fa-envelope"></i>
+      <input type="email" id="email" placeholder="Seu email" required />
+    </div>
+    <div class="input-group">
+      <i class="fas fa-lock"></i>
+      <input type="password" id="password" placeholder="Sua senha" required />
+    </div>
+
+    <p class="error-message" id="errorMsg"></p>
+    <button id="btnLogin">Entrar</button>
+
+    <div class="links">
+      <a href="cadastro.html">Criar conta</a>
+      <a href="/#" id="forgotPassword">Esqueci a senha</a>
+    </div>
+  </div>
+
+  <!-- Áudio de sucesso para reprodução após login bem-sucedido -->
+  <audio id="successSound" src="sucesso.mp3" preload="auto"></audio>
+
+  <!-- Inclusão do Firebase (Código JavaScript) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="js/login.js"></script>
+</body>
+
+</html>

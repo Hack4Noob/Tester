@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Vimbalambi News - A rede social comunitária para seu bairro">
+  <meta name="theme-color" content="#0866ff">
+  <title>Vimbalambi News - Home</title>
+  
+  <style>
+    /* ================ */
+    /* DESIGN SYSTEM */
+    /* ================ */
+    :root {
+      /* Sistema de cores aprimorado */
+      --primary-50: #e6f0ff;
+      --primary-100: #cce0ff;
+      --primary-200: #99c2ff;
+      --primary-300: #66a3ff;
+      --primary-400: #3385ff;
+      --primary-500: #0866ff; /* Cor primária */
+      --primary-600: #0752cc;
+      --primary-700: #053d99;
+      --primary-800: #042966;
+      --primary-900: #021433;
+      
+      /* Cores semânticas */
+      --color-text: #050505;
+      --color-text-secondary: #65676b;
+      --color-text-tertiary: #8a8d91;
+      --color-surface: #ffffff;
+      --color-background: #f0f2f5;
+      --color-border: #dddfe2;
+      --color-hover: rgba(0, 0, 0, 0.05);
+      --color-active: rgba(0, 0, 0, 0.1);
+      
+  /* =====================================================================
+   VARIÁVEIS GLOBAIS
+===================================================================== */
+
+:root 
+  /* === Cores - Modo Claro === */
+  --color-text: #050505;
+  --color-text-secondary: #65676b;
+  --color-text-tertiary: #8a8d91;
+  --color-surface: #ffffff;
+  --color-background: #f0f2f5;
+  --color-border: #dddfe2;
+  --color-hover: rgba(0, 0, 0, 0.05);
+  --color-active: rgba(0, 0, 0, 0.1);
+  --primary-color: #1877f2;
+  --primary-hover: #166fe5;
+
+  /* === Cores - Modo Escuro === */
+  --dark-color-text: #e4e6eb;
+  --dark-color-text-secondary: #b0b3b8;
+  --dark-color-text-tertiary: #49768b;
+  --dark-color-surface: #1e1e1e;
+  --dark-color-background: #3a3a3a;
+  --dark-color-border: #3e4042;
+  --dark-color-hover: rgba(255, 255, 255, 0.05);
+  --dark-color-active: rgba(255, 255, 255, 0.1);
+
+  /* === Sombra === */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  /* === Espaçamento (8px scale) === */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+
+  /* === Bordas === */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  /* === Tipografia === */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+
+  /* === Transições === */
+  --transition-fast: 100ms ease;
+  --transition-normal: 200ms ease;
+  --transition-slow: 300ms ease;
+
+  /* === Camadas (Z-Index) === */
+  --z-base: 0;
+  --z-above: 1;
+  --z-below: -1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal: 400;
+  --z-popover: 500;
+  --z-toast: 600;
+  --z-tooltip: 700;
+}
+
+
+/* =====================================================================
+   RESET MODERNO
+===================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background-color var(--transition-normal),
+    color var(--transition-normal);
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* =====================================================================
+   FORMULÁRIOS & BOTÕES
+===================================================================== */
+
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: var(--primary-color);
+  color: white;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+button:hover {
+  background-color: var(--primary-hover);
+  transform: scale(1.02);
+}
+
+button:active {
+  background-color: var(--color-active);
+  transform: scale(0.98);
+}
+
+
+/* =====================================================================
+   LINKS
+===================================================================== */
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: background-color var(--transition-fast);
+}
+
+a:hover {
+  background-color: var(--color-hover);
+}
+
+a:active {
+  background-color: var(--color-active);
+}
+
+
+/* =====================================================================
+   TEXTO SELECIONADO
+===================================================================== */
+
+::selection {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+
+/* =====================================================================
+   LISTAS
+===================================================================== */
+
+ul, ol {
+  list-style: none;
+}
+
+
+/* =====================================================================
+   COMPONENTES
+===================================================================== */
+
+.post, .dropdown-content, .post-field {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition:
+    background-color var(--transition-normal),
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+
+/* =====================================================================
+   ELEMENTOS DE MÍDIA PERSONALIZADOS
+===================================================================== */
+
+.post-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: var(--space-3);
+}
+
+.post-image {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  margin-top: var(--space-3);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+
+/* =====================================================================
+   MODO ESCURO AUTOMÁTICO OU FORÇADO
+===================================================================== */
+
+/* Com base no sistema */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-text: var(--dark-color-text);
+    --color-text-secondary: var(--dark-color-text-secondary);
+    --color-text-tertiary: var(--dark-color-text-tertiary);
+    --color-surface: var(--dark-color-surface);
+    --color-background: var(--dark-color-background);
+    --color-border: var(--dark-color-border);
+    --color-hover: var(--dark-color-hover);
+    --color-active: var(--dark-color-active);
+  }
+}
+
+/* Forçado manualmente */
+[data-theme="dark"] {
+  --color-text: var(--dark-color-text);
+  --color-text-secondary: var(--dark-color-text-secondary);
+  --color-text-tertiary: var(--dark-color-text-tertiary);
+  --color-surface: var(--dark-color-surface);
+  --color-background: var(--dark-color-background);
+  --color-border: var(--dark-color-border);
+  --color-hover: var(--dark-color-hover);
+  --color-active: var(--dark-color-active);
+}
+
+    /* =============== */
+    /* COMPONENTES */
+    /* =============== */
+
+    /* ================ */
+    /* BARRA SUPERIOR */
+    /* ================ */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: var(--z-fixed);
+      height: 56px;
+      background-color: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+      padding: 0 var(--space-4);
+    }
+
+    .top-nav .container {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .top-nav-profile {
+      display: flex;
+      align-items: center;
+      margin-right: var(--space-4);
+    }
+
+    .top-nav-center {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .top-nav-right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-left: auto;
+    }
+
+    .app-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-weight: 600;
+      font-size: var(--text-lg);
+    }
+
+    /* Barra de pesquisa */
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background: var(--color-background);
+      border-radius: var(--radius-xl);
+      padding: var(--space-1) var(--space-3);
+      width: 240px;
+      transition: all var(--transition-fast);
+    }
+
+    .search-bar:focus-within {
+      background: var(--color-surface);
+      box-shadow: 0 0 0 2px var(--primary-200);
+    }
+
+    .search-bar.expanded {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .search-icon {
+      color: var(--color-text-secondary);
+      margin-right: var(--space-2);
+    }
+
+    .search-bar input {
+      border: none;
+      background: transparent;
+      width: 100%;
+      outline: none;
+    }
+
+    .search-bar input::placeholder {
+      color: var(--color-text-secondary);
+    }
+
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-toggle {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      min-width: 200px;
+      margin-top: var(--space-2);
+      z-index: var(--z-dropdown);
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: 
+        opacity var(--transition-fast),
+        transform var(--transition-fast);
+      pointer-events: none;
+    }
+
+    .dropdown-content.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-4);
+      color: var(--color-text);
+      transition: background-color var(--transition-fast);
+      width: 100%;
+      text-align: left;
+      border: none;
+      background: none;
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--color-hover);
+    }
+
+    /* Ícones e botões */
+    .icon-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-full);
+      transition: 
+        background-color var(--transition-fast),
+        transform var(--transition-fast);
+    }
+
+    .icon-button:hover {
+      background-color: var(--color-hover);
+    }
+
+    .icon-button:active {
+      transform: scale(0.95);
+    }
+
+    .notification-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: var(--primary-500);
+      color: white;
+      border-radius: var(--radius-full);
+      width: 18px;
+      height: 18px;
+      font-size: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulse 1.5s infinite;
+      box-shadow: 0 0 0 2px var(--color-surface);
+    }
+
+    .profile-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-full);
+      object-fit: cover;
+    }
+
+    /* =============== */
+    /* CRIAR POSTAGEM */
+    /* =============== */
+    .create-post {
+      padding: var(--space-4);
+      background-color: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .post-field {
+      width: 100%;
+      padding: var(--space-3);
+      background-color: var(--color-background);
+      border-radius: var(--radius-xl);
+      text-align: left;
+      transition: background-color var(--transition-fast);
+      cursor: pointer;
+      border: none;
+    }
+
+    .post-field:hover {
+      background-color: var(--color-hover);
+    }
+
+    .post-field .placeholder {
+      color: var(--color-text-secondary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    /* ============= */
+    /* FEED DE POSTS */
+    /* ============= */
+    .feed-container {
+      flex: 1;
+      padding-bottom: 60px;
+    }
+
+    .feed {
+      max-width: 680px;
+      width: 100%;
+      margin-inline: auto;
+      padding: var(--space-4);
+    }
+
+    .post {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      margin-bottom: var(--space-6);
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--transition-fast);
+    }
+
+    .post:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .post-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-2);
+    }
+
+    .post-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-full);
+      object-fit: cover;
+    }
+
+    .post-user-info {
+      flex: 1;
+    }
+
+    .post-user {
+      font-weight: 600;
+      font-size: var(--text-sm);
+      color: var(--color-text);
+    }
+
+    .post-meta {
+      font-size: var(--text-xs);
+      color: var(--color-text-tertiary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+    }
+
+    .post-content {
+      margin: var(--space-3) 0;
+      font-size: var(--text-base);
+      line-height: 1.4;
+      color: var(--color-text);
+    }
+
+    .post-image-container {
+      margin: var(--space-3) 0;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .post-image {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+    }
+
+    .post-stats {
+      display: flex;
+      gap: var(--space-4);
+      margin-top: var(--space-2);
+      color: var(--color-text-secondary);
+      font-size: var(--text-sm);
+    }
+
+    .post-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: var(--space-3);
+      color: var(--color-text-secondary);
+      border-top: 1px solid var(--color-border);
+      padding-top: var(--space-2);
+    }
+
+    .post-action {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-fast);
+      flex: 1;
+      justify-content: center;
+      border: none;
+      background: none;
+    }
+
+    .post-action:hover {
+      background-color: var(--color-hover);
+    }
+
+    .post-action.active {
+      color: var(--primary-500);
+    }
+
+    /* =============== */
+    /* MODAIS */
+    /* =============== */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: var(--z-modal);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-normal);
+    }
+
+    .modal[aria-modal="true"] {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background-color: var(--color-surface);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: translateY(20px);
+      transition: transform var(--transition-normal);
+      padding: var(--space-4);
+    }
+
+    .modal[aria-modal="true"] .modal-content {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: var(--space-4);
+    }
+
+    .modal-title {
+      font-size: var(--text-xl);
+      font-weight: 600;
+    }
+
+    .modal-close {
+      font-size: var(--text-2xl);
+      line-height: 1;
+      padding: var(--space-1);
+      border-radius: var(--radius-full);
+      transition: background-color var(--transition-fast);
+      border: none;
+      background: none;
+    }
+
+    .modal-close:hover {
+      background-color: var(--color-hover);
+    }
+
+    /* Modal de compartilhamento */
+    .share-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+    }
+
+    .share-option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-3);
+      border-radius: var(--radius-md);
+      transition: transform var(--transition-fast);
+      border: none;
+      background: var(--color-background);
+    }
+
+    .share-option:hover {
+      transform: translateY(-2px);
+      background: var(--color-hover);
+    }
+
+    .share-option i {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-2);
+    }
+
+    /* =============== */
+    /* NAVEGAÇÃO INFERIOR */
+    /* =============== */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+      z-index: var(--z-sticky);
+      padding: var(--space-2) 0;
+    }
+
+    .bottom-nav ul {
+      display: flex;
+      justify-content: space-around;
+      max-width: 600px;
+      margin-inline: auto;
+    }
+
+    .bottom-nav li {
+      list-style: none;
+    }
+
+    .bottom-nav a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-1);
+      font-size: var(--text-xs);
+      color: var(--color-text-secondary);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-fast);
+    }
+
+    .bottom-nav a:hover,
+    .bottom-nav a:focus-visible {
+      color: var(--primary-500);
+      background-color: var(--color-hover);
+    }
+
+    .bottom-nav a.active {
+      color: var(--primary-500);
+    }
+
+    .bottom-nav i {
+      font-size: var(--text-xl);
+    }
+
+    .friend-requests-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: var(--primary-500);
+      color: white;
+      border-radius: var(--radius-full);
+      width: 18px;
+      height: 18px;
+      font-size: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ================ */
+    /* ACESSIBILIDADE */
+    /* ================ */
+    .skip-link {
+      position: fixed;
+      top: -100%;
+      left: var(--space-2);
+      background: var(--primary-500);
+      color: white;
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-sm);
+      z-index: var(--z-tooltip);
+      transition: top var(--transition-fast);
+    }
+
+    .skip-link:focus {
+      top: var(--space-2);
+    }
+
+    /* Foco visível para elementos interativos */
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--primary-500);
+      outline-offset: 2px;
+    }
+
+    /* Classes para conteúdo oculto visualmente */
+    .sr-only-focusable:not(:focus):not(:focus-within),
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    /* ================ */
+    /* ANIMAÇÕES */
+    /* ================ */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    /* ================ */
+    /* RESPONSIVIDADE */
+    /* ================ */
+    @media (max-width: 768px) {
+      .top-nav {
+        padding: 0 var(--space-2);
+      }
+      
+      .search-bar {
+        width: auto;
+        padding: var(--space-1);
+        background: transparent;
+      }
+      
+      .search-bar input {
+        display: none;
+      }
+      
+      .search-bar.expanded {
+        width: 100%;
+        padding: var(--space-1) var(--space-2);
+        background: var(--color-background);
+      }
+      
+      .search-bar.expanded input {
+        display: block;
+      }
+      
+      .feed {
+        padding: var(--space-2);
+      }
+      
+      .post {
+        padding: var(--space-3);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .search-bar:not(.expanded) {
+        display: none;
+      }
+      
+      .story-avatar {
+        width: 56px;
+        height: 56px;
+      }
+    }
+  </style>
+
+  <!-- Font Awesome com fallback -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Fontes do Google com fallback -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- JavaScript diferido com pré-carregamento -->
+  <link rel="preload" href="js/home.js" as="script">
+  <script src="utils.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="cloudinary-config.js"></script>
+    <script src="deezer-api.js"></script>
+    <script src="story-viewer.js"></script>
+    <script src="media-editor.js"></script>
+    <script src="js/home.js"></script>
+</head>
+<body>
+  <!-- Navegação por teclado (acessibilidade) -->
+  <a href="#main-content" class="skip-link sr-only-focusable">Pular para conteúdo principal</a>
+  
+<!-- Barra superior de navegação -->
+<header class="top-nav" role="banner" aria-label="Navegação superior">
+  <div class="container">
+    <!-- Meu Perfil -->
+    <div class="top-nav-profile">
+      <a href="perfil.html" class="profile-link">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto de perfil do usuário" class="profile-avatar" width="40" height="40">
+        <span class="profile-name">Perfil</span>
+      </a>
+    </div>
+
+    <!-- Logo e Páginas Centralizadas -->
+    <div class="top-nav-center">
+      <!-- Nome do aplicativo -->
+      <div class="app-name">
+        <a href="home.html" class="app-logo">
+          <i class="fas fa-globe" aria-hidden="true"></i>
+          <span>Vimbalambi</span>
+        </a>
+      </div>
+
+      <!-- Navegação de páginas -->
+      <nav class="top-nav-pages" aria-label="Navegação de páginas">
+        <a href="paginas.html" data-tooltip="Páginas">
+          <i class="fas fa-file-alt"></i>
+        </a>
+      </nav>
+    </div>
+
+    <!-- Itens do lado direito -->
+    <div class="top-nav-right">
+      <!-- Notificação -->
+      <div class="top-nav-notification">
+        <a href="notificacoes.html" class="icon-button notification-bell" aria-label="Notificações">
+          <i class="fas fa-bell" aria-hidden="true"></i>
+          <span class="notification-badge" aria-hidden="true">3</span>
+          <span class="visually-hidden">3 notificações não lidas</span>
+        </a>
+      </div>
+
+      <!-- Campo de Pesquisa -->
+      <div class="top-nav-search">
+        <div class="search-bar">
+          <i class="fas fa-search search-icon" aria-hidden="true"></i>
+          <input type="text" placeholder="Pesquisar..." aria-label="Campo de pesquisa">
+        </div>
+      </div>
+
+      <!-- Vídeos -->
+      <div class="top-nav-videos">
+        <a href="videos.html" class="icon-button" aria-label="Vídeos">
+          <i class="fas fa-play" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <!-- Modalidades -->
+      <div class="top-nav-modalities">
+        <button class="icon-button" aria-label="Modalidades" aria-expanded="false" aria-controls="dropdown-content">
+          <i class="fas fa-layer-group" aria-hidden="true"></i>
+        </button>
+        <div id="dropdown-content" class="dropdown-content">
+          <div class="dropdown-group">
+            <a href="configuracoes.html" class="dropdown-item" aria-label="Configurações">
+              <i class="fas fa-cog" aria-hidden="true"></i>
+              <span>Configurações</span>
+            </a>
+            <a href="ajuda.html" class="dropdown-item" aria-label="Ajuda">
+              <i class="fas fa-question-circle" aria-hidden="true"></i>
+              <span>Ajuda</span>
+            </a>
+          </div>
+
+          <div class="dropdown-group">
+            <button class="dropdown-item" id="theme-toggle" aria-label="Alternar tema">
+              <i class="fas fa-moon" aria-hidden="true"></i>
+              <span>Tema</span>
+            </button>
+
+            <a href="trocar-conta.html" class="dropdown-item" aria-label="Trocar de conta">
+              <i class="fas fa-exchange-alt" aria-hidden="true"></i>
+              <span>Trocar de conta</span>
+            </a>
+          </div>
+
+          <div class="dropdown-group">
+            <button class="dropdown-item" aria-label="Sair" id="logout-btn">
+              <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+              <span>Sair</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header><script type="module" src="Agent/stories.js"></script>
+
+
+
+<!-- Criar postagem -->
+<section class="create-post">
+  <button class="post-field" onclick="window.location.href='post.html'" aria-label="Criar nova postagem">
+    <div class="placeholder">
+      <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+      <span>Sugestão: faça uma postagem...</span>
+    </div>
+  </button>
+</section>
+
+<!-- Feed de postagens -->
+<main id="main-content" class="feed-container" role="main" aria-label="Feed de notícias">
+  <div class="feed">
+    <article class="post" aria-labelledby="post-1-title" tabindex="0">
+      <header class="post-header">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto de perfil de Joana Pedro" class="post-avatar" loading="lazy" width="40" height="40">
+        <div class="post-user-info">
+          <h2 id="post-1-title" class="post-user">Joana Pedro</h2>
+          <p class="post-meta">
+            <time datetime="2023-06-15T14:30:00">Hoje às 14:30</time>
+            <span aria-hidden="true">•</span>
+            <span class="visually-hidden">Visibilidade: </span>
+            <i class="fas fa-globe-americas" aria-hidden="true"></i>
+            <span class="visually-hidden">Público</span>
+          </p>
+        </div>
+        <button class="post-options icon-button" aria-label="Opções da postagem" aria-haspopup="true">
+          <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
+        </button>
+      </header>
+    </article>
+  </div>
+</main>
+        
+        <div class="post-content">
+          <p>Hoje o bairro está muito calmo. Que continue assim!</p>
+        </div>
+        
+        <div class="post-stats">
+          <span class="post-likes"><i class="fas fa-thumbs-up" aria-hidden="true"></i> 12</span>
+          <span class="post-comments"><i class="fas fa-comment" aria-hidden="true"></i> 3</span>
+        </div>
+        
+        <div class="post-actions" role="group" aria-label="Ações da postagem">
+          <button class="post-action like" aria-pressed="false" aria-label="Curtir" data-post-id="1">
+            <i class="far fa-thumbs-up" aria-hidden="true"></i>
+            <span>Curtir</span>
+          </button>
+          <button class="post-action comment" onclick="window.location.href='comentarios.html?post=1'" aria-label="Comentar">
+            <i class="far fa-comment" aria-hidden="true"></i>
+            <span>Comentar</span>
+          </button>
+          <button class="post-action share" aria-label="Compartilhar" aria-haspopup="dialog" aria-controls="share-modal">
+            <i class="far fa-share-square" aria-hidden="true"></i>
+            <span>Compartilhar</span>
+          </button>
+        </div>
+      </article>
+
+      <article class="post" aria-labelledby="post-2-title" tabindex="0">
+        <header class="post-header">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto de perfil de Manuel Candé" class="post-avatar" loading="lazy" width="40" height="40">
+          <div class="post-user-info">
+            <h2 id="post-2-title" class="post-user">Manuel Candé</h2>
+            <p class="post-meta">
+              <time datetime="2023-06-14T18:45:00">Ontem às 18:45</time>
+              <span aria-hidden="true">•</span>
+              <span class="visually-hidden">Visibilidade: </span>
+              <i class="fas fa-user-friends" aria-hidden="true"></i>
+              <span class="visually-hidden">Amigos</span>
+            </p>
+          </div>
+          <button class="post-options icon-button" aria-label="Opções da postagem" aria-haspopup="true">
+            <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
+          </button>
+        </header>
+        
+        <div class="post-content">
+          <p>Alguém viu meu cachorro? Fugiu ontem à tarde na Rua das Flores. Responda aqui se tiver qualquer informação!</p>
+        </div>
+        
+        <figure class="post-image-container">
+          <img src="https://placedog.net/500/300?id=2" alt="Cachorro da raça Labrador de cor amarela com coleira vermelha" class="post-image" loading="lazy" width="500" height="300">
+          <figcaption class="visually-hidden">Foto do cachorro perdido: Labrador amarelo com coleira vermelha</figcaption>
+        </figure>
+        
+        <div class="post-stats">
+          <span class="post-likes"><i class="fas fa-thumbs-up" aria-hidden="true"></i> 24</span>
+          <span class="post-comments"><i class="fas fa-comment" aria-hidden="true"></i> 8</span>
+          <span class="post-shares"><i class="fas fa-share" aria-hidden="true"></i> 2</span>
+        </div>
+        
+        <div class="post-actions" role="group" aria-label="Ações da postagem">
+          <button class="post-action like active" aria-pressed="true" aria-label="Remover curtida" data-post-id="2">
+            <i class="fas fa-thumbs-up" aria-hidden="true"></i>
+            <span>Curtir</span>
+          </button>
+          <button class="post-action comment" onclick="window.location.href='comentarios.html?post=2'" aria-label="Comentar">
+            <i class="far fa-comment" aria-hidden="true"></i>
+            <span>Comentar</span>
+          </button>
+          <button class="post-action share" aria-label="Compartilhar" aria-haspopup="dialog" aria-controls="share-modal">
+            <i class="far fa-share-square" aria-hidden="true"></i>
+            <span>Compartilhar</span>
+          </button>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- Navegação inferior com aba de Pedidos -->
+  <nav id="footer-navigation" class="bottom-nav" role="navigation" aria-label="Navegação principal">
+    <ul role="list">
+      <li role="listitem">
+        <a href="home.html" class="active" aria-current="page">
+          <i class="fas fa-home" aria-hidden="true"></i>
+          <span>Início</span>
+        </a>
+      </li>
+      <li role="listitem">
+        <a href="eventos.html">
+          <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+          <span>Eventos</span>
+        </a>
+      </li>
+      <li role="listitem">
+        <a href="pedidos.html" class="friend-requests-link">
+          <i class="fas fa-user-friends" aria-hidden="true"></i>
+          <span>Pedidos</span>
+          <span class="friend-requests-badge" aria-hidden="true">2</span>
+          <span class="visually-hidden">2 pedidos pendentes</span>
+        </a>
+      </li>
+      <li role="listitem">
+        <a href="Modalidades.html">
+          <i class="fas fa-tags" aria-hidden="true"></i>
+          <span>Modalidades</span>
+        </a>
+      </li>
+      <li role="listitem">
+        <a href="mensagens.html">
+          <i class="fas fa-comment-dots" aria-hidden="true"></i>
+          <span>Chat</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Modal de compartilhamento -->
+  <div id="share-modal" class="modal" role="dialog" aria-modal="false" aria-labelledby="share-modal-title" hidden>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Fechar modal">&times;</button>
+      <h2 id="share-modal-title">Compartilhar postagem</h2>
+      <div class="share-options">
+        <button class="share-option" aria-label="Compartilhar no WhatsApp" onclick="shareViaWhatsApp()">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i>
+          <span>WhatsApp</span>
+        </button>
+        <button class="share-option" aria-label="Compartilhar no Facebook" onclick="shareViaFacebook()">
+          <i class="fab fa-facebook" aria-hidden="true"></i>
+          <span>Facebook</span>
+        </button>
+        <button class="share-option" aria-label="Copiar link" onclick="copyToClipboard()">
+          <i class="fas fa-link" aria-hidden="true"></i>
+          <span>Copiar link</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts otimizados -->
+  <script>
+    // Carrega scripts não críticos após a página ter carregado
+    window.addEventListener('load', function() {
+      var lazyScripts = [
+        'js/lazy-analytics.js',
+        'js/lazy-social.js'
+      ];
+      
+      lazyScripts.forEach(function(src) {
+        var script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        document.body.appendChild(script);
+      });
+      
+      // Controle da barra de pesquisa em mobile
+      const searchBar = document.querySelector('.search-bar');
+      const searchIcon = document.querySelector('.search-icon');
+      
+      if (searchIcon && searchBar) {
+        searchIcon.addEventListener('click', function(e) {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            searchBar.classList.toggle('expanded');
+            if (searchBar.classList.contains('expanded')) {
+              searchBar.querySelector('input').focus();
+            }
+          }
+        });
+        
+        // Fechar ao clicar fora
+        document.addEventListener('click', function(e) {
+          if (!searchBar.contains(e.target) && !searchIcon.contains(e.target)) {
+            searchBar.classList.remove('expanded');
+          }
+        });
+      }
+      
+      // Esconder barra ao rolar
+      let lastScroll = 0;
+      const topNav = document.querySelector('.top-nav');
+      
+      window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > lastScroll && currentScroll > 100) {
+          topNav.classList.add('hide-on-scroll');
+        } else {
+          topNav.classList.remove('hide-on-scroll');
+        }
+        
+        lastScroll = currentScroll;
+      }, { passive: true });
+
+      // Controle do dropdown de modalidades
+      const modalitiesButton = document.querySelector('.top-nav-modalities .icon-button');
+      const dropdownContent = document.getElementById('dropdown-content');
+      
+      if (modalitiesButton && dropdownContent) {
+        modalitiesButton.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const isExpanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !isExpanded);
+          dropdownContent.classList.toggle('active');
+        });
+
+        // Fechar ao clicar fora
+        document.addEventListener('click', function() {
+          modalitiesButton.setAttribute('aria-expanded', 'false');
+          dropdownContent.classList.remove('active');
+        });
+      }
+
+      // Controle do modal de compartilhamento
+      const shareButtons = document.querySelectorAll('.post-action.share');
+      const shareModal = document.getElementById('share-modal');
+      const modalClose = document.querySelector('.modal-close');
+      
+      shareButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          shareModal.removeAttribute('hidden');
+          shareModal.setAttribute('aria-modal', 'true');
+        });
+      });
+      
+      if (modalClose) {
+        modalClose.addEventListener('click', function() {
+          shareModal.setAttribute('hidden', 'true');
+          shareModal.setAttribute('aria-modal', 'false');
+        });
+      }
+
+      // Funções de compartilhamento
+      function shareViaWhatsApp() {
+        const url = encodeURIComponent(window.location.href);
+        window.open(`whatsapp://send?text=${url}`, '_blank');
+      }
+      
+      function shareViaFacebook() {
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+      }
+      
+      function copyToClipboard() {
+        navigator.clipboard.writeText(window.location.href)
+          .then(() => alert('Link copiado para a área de transferência!'))
+          .catch(err => console.error('Erro ao copiar link:', err));
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro - VIMBALAMBI NEWS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <link rel="stylesheet" href="css/cadastro.css">
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="assets/logo.png" alt="Logo">
+      <h2>VIMBALAMBI NEWS</h2>
+    </div>
+    <div class="progress-bar">
+      <div class="step step1 active"></div>
+      <div class="step step2"></div>
+      <div class="step step3"></div>
+    </div>
+    <form id="cadastroForm">
+      <div class="form-step step-1 active">
+        <input type="email" id="email" placeholder="Email" required>
+        <input 
+  type="password" 
+  id="senha" 
+  name="senha" 
+  placeholder="Senha (mínimo 6 caracteres)" 
+  minlength="6" 
+  required
+  oninput="checkPasswordLength()"
+>
+      </div>
+      <div class="form-step step-2">
+        <input type="text" id="firstName" placeholder="Primeiro Nome" required>
+        <input type="text" id="lastName" placeholder="Último Nome" required>
+        <input type="date" id="birthDate" required>
+        <select id="gender" required>
+          <option value="">Selecione o Gênero</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
+          <option value="Feminino">Outro..Panina</option>
+        </select>
+      </div>
+      <div class="form-step step-3">
+        <input type="file" id="photo" accept="image/*">
+        <div id="loadingSpinner"></div>
+      </div>
+      <div class="buttons">
+        <button type="button" class="back" onclick="prevStep()">Voltar</button>
+        <button type="button" class="next" onclick="nextStep()">Próximo</button>
+        <button type="submit" class="next" style="display:none">Cadastrar</button>
+      </div>
+    </form>
+  </div>  
+  <script src="js/cadastro.js"></script>
+</body>
+</html>

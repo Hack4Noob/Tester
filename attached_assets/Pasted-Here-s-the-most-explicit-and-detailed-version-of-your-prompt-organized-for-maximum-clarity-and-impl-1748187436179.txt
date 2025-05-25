@@ -1,0 +1,211 @@
+Here's the most explicit and detailed version of your prompt, organized for maximum clarity and implementation:
+
+---
+
+**PROMPT PARA O AGENT REPLIT – REDE SOCIAL COMPLETA (VERSÃO EXPLÍCITA)**
+
+**Objetivo Final:**  
+Criar uma rede social totalmente funcional com todas as features listadas, integrando todos os serviços mencionados de forma real (sem simulações).
+
+---
+
+### **1. INFRAESTRUTURA TÉCNICA (NÃO NEGOCIÁVEL)**
+**1.1 Autenticação e Banco de Dados**  
+- **Firebase Authentication** (Email/Senha)  
+- **Firestore Database** (Estrutura mínima obrigatória):  
+  ```javascript
+  users/{uid}: {
+    nome: string,
+    sobrenome: string,
+    email: string,
+    fotoPerfil: string (URL Cloudinary),
+    dataNascimento: timestamp,
+    genero: string
+  }
+  posts/{postId}: {
+    autor: uid,
+    conteudo: string,
+    midia: string (URL Cloudinary),
+    musica: string (Deezer track ID),
+    timestamp: firestore timestamp,
+    curtidas: [uid1, uid2,...],
+    comentarios: [
+      {autor: uid, texto: string, timestamp: timestamp}
+    ]
+  }
+  stories/{storyId}: {
+    autor: uid,
+    midia: string (URL Cloudinary),
+    timestamp: timestamp,
+    views: [uid1, uid2,...],
+    reacoes: [{uid: string, tipo: string}]
+  }
+  grupos/{grupoId}: {
+    nome: string,
+    imagem: string (URL Cloudinary),
+    membros: [uid1, uid2,...],
+    posts: [postId1, postId2,...]
+  }
+  ```
+
+**1.2 Upload de Mídia**  
+- **Cloudinary** com configuração obrigatória:  
+  - Preset `vimbalambi_preset`:  
+    - Formatos: `jpg, png, mp4, webm`  
+    - Transformação: Auto-otimização para web, max width 1080px  
+  - Preset `stories_preset`:  
+    - Formatos: `jpg, png, mp4`  
+    - Duração máxima vídeos: 15s  
+    - Codec: H.264 para vídeos  
+
+**1.3 APIs Externas**  
+- **Deezer API**:  
+  - Embed player com preview de 30s em posts/stories  
+  - Busca por track ID (ex: `https://api.deezer.com/track/3135556`)  
+- **APIs por Categoria** (Todas devem retornar dados reais):  
+  ```markdown
+  Geek:
+  - MangaDex: `https://api.mangadex.org/manga?limit=5`
+  - OMDb: `http://www.omdbapi.com/?apikey=[KEY]&s=avengers`
+  - RAWG: `https://api.rawg.io/api/games?key=[KEY]`
+
+  Desporto:
+  - TheSportsDB: `https://www.thesportsdb.com/api/v1/json/3/eventspastleague.php?id=4328`
+  - API-Football: `https://v3.football.api-sports.io/fixtures?live=all`
+  - Balldontlie: `https://www.balldontlie.io/api/v1/players`
+
+  Música:
+  - Deezer: `https://api.deezer.com/chart`
+  - Last.fm: `http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks`
+  - Genius: `https://api.genius.com/songs/378195`
+
+  Matemática:
+  - Numbers API: `http://numbersapi.com/random/math`
+  - Math.js: Usar CDN para cálculos client-side
+
+  Saúde/Natureza:
+  - NASA APOD: `https://api.nasa.gov/planetary/apod?api_key=[KEY]`
+  - OpenWeatherMap: `https://api.openweathermap.org/data/2.5/weather?q=London`
+  ```
+
+---
+
+### **2. FLUXO DO USUÁRIO (PASSO A PASSO OBRIGATÓRIO)**
+**2.1 Cadastro** (`cadastro.html`)  
+- **Etapa 1**:  
+  ```html
+  <input type="text" id="nome" placeholder="Nome" required>
+  <input type="text" id="sobrenome" placeholder="Sobrenome" required>
+  <select id="genero">
+    <option value="masculino">Masculino</option>
+    <option value="feminino">Feminino</option>
+    <option value="outro">Outro</option>
+  </select>
+  <input type="date" id="nascimento" required>
+  ```
+- **Etapa 2**:  
+  ```javascript
+  // Firebase Auth
+  await createUserWithEmailAndPassword(auth, email, senha);
+  // Firestore
+  await setDoc(doc(db, "users", uid), {nome, sobrenome, email, genero, nascimento});
+  ```
+- **Etapa 3 (Opcional)**:  
+  ```javascript
+  // Upload Cloudinary
+  const result = await cloudinary.upload(file, { 
+    upload_preset: 'vimbalambi_preset',
+    public_id: `perfil_${uid}`
+  });
+  ```
+
+**2.2 Login** (`login.html`)  
+- Validação:  
+  ```javascript
+  await signInWithEmailAndPassword(auth, email, senha);
+  // Redirecionar para home.html após login
+  ```
+
+---
+
+### **3. PÁGINAS PRINCIPAIS (ESTRUTURA MÍNIMA)**
+**3.1 `home.html`**  
+- **Feed de Posts**:  
+  ```javascript
+  // Query Firestore
+  const posts = await getDocs(collection(db, "posts"));
+  // Exemplo de post:
+  <div class="post">
+    <img src="{{URL Cloudinary}}">
+    <audio controls src="https://cdns-preview-7.deezer.com/stream/7-{DEEZER_TRACK_ID}.mp3"></audio>
+    <button onclick="curtirPost('{{postId}}')">Curtir</button>
+  </div>
+  ```
+- **Stories**:  
+  ```javascript
+  // Cloudinary + Firestore
+  const stories = await getDocs(query(collection(db, "stories"), where("timestamp", ">", yesterday)));
+  ```
+
+**3.2 `editor.html`**  
+- **Fluxo do Editor**:  
+  1. Upload imagem de fundo → Cloudinary (`stories_preset`)  
+  2. Adicionar elementos com Fabric.js:  
+     ```javascript
+     canvas.add(new fabric.Text(texto, { left: 100, top: 100 }));
+     ```
+  3. Exportar como imagem/vídeo:  
+     ```javascript
+     canvas.toDataURL({ format: 'png' });
+     ```
+
+---
+
+### **4. REQUISITOS CRÍTICOS**
+- **Segurança**:  
+  ```javascript
+  // Todas as páginas privadas devem ter:
+  onAuthStateChanged(auth, (user) => {
+    if (!user) window.location.href = "login.html";
+  });
+  ```
+- **Performance**:  
+  - Limitar queries Firestore com `limit(20)` e `orderBy("timestamp", "desc")`  
+  - Compressão automática no Cloudinary (`q_auto:good`)  
+
+- **Erros Comuns a Evitar**:  
+  - Não hardcodar API keys no frontend (usar environment variables no Replit)  
+  - Sempre usar `try/catch` em operações assíncronas  
+  - Validar formatos de arquivo antes do upload  
+
+---
+
+### **5. ENTREGÁVEIS FINAIS**
+1. **Arquivos novos obrigatórios**:  
+   - `modalidades.html` (com 3 APIs reais por categoria)  
+   - `editor.html` (com Fabric.js funcional)  
+   - `grupos.html` (CRUD completo de grupos)  
+   - `mensagens.html` (chat em tempo real + WebRTC)  
+
+2. **Testes mínimos**:  
+   - [ ] Cadastro → Login → Postar → Ver post no feed  
+   - [ ] Criar story → Visualizar story  
+   - [ ] Criar grupo → Postar no grupo  
+   - [ ] Enviar mensagem privada  
+
+3. **Documentação**:  
+   - Comentar todos os arquivos JS com explicações passo a passo  
+
+---
+
+**NOTA FINAL:**  
+Todos os elementos devem ser implementados **exatamente como descrito**, sem substituições ou simplificações. O sistema deve ser 100% funcional em produção (não apenas em demo).  
+
+**Prioridade de implementação:**  
+1. Autenticação + Firestore  
+2. Feed de posts + Stories  
+3. Editor de Stories  
+4. APIs por categoria  
+5. Mensagens/WebRTC  
+
+Assinado: **Estanislau Manda – Vimbalambi News** ✅
