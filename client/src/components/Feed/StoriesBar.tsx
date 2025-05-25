@@ -74,7 +74,7 @@ export function StoriesBar({ stories, onCreateStory, onViewStory }: StoriesBarPr
                   </div>
                 </div>
                 <span className="text-xs font-medium max-w-[4rem] truncate">
-                  {story.author.name.split(" ")[0]}
+                  {story.author.name?.split(" ")[0] || 'Usuário'}
                 </span>
               </Button>
             </div>
