@@ -4,13 +4,11 @@ import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
 import { getStorage, connectStorageEmulator } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAP3Sy1PB0m_EpKifOpUd7tc1_eAKF2alM",
-  authDomain: "vimbalambi-news.firebaseapp.com",
-  databaseURL: "https://vimbalambi-news-default-rtdb.firebaseio.com",
-  projectId: "vimbalambi-news",
-  storageBucket: "vimbalambi-news.appspot.com",
-  messagingSenderId: "212254517932",
-  appId: "1:212254517932:web:d061c943f90b4c4e204d09"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}.firebaseapp.com`,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}.firebasestorage.app`,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
@@ -25,8 +23,8 @@ export const db = getFirestore(app);
 // Initialize Cloud Storage and get a reference to the service
 export const storage = getStorage(app);
 
-// Connect to emulators in development
-if (import.meta.env.DEV) {
+// Only use emulators if explicitly enabled
+if (import.meta.env.VITE_USE_FIREBASE_EMULATOR === 'true') {
   try {
     connectAuthEmulator(auth, "http://localhost:9099");
     connectFirestoreEmulator(db, 'localhost', 8080);
