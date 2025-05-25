@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Facebook-inspired color system */
+  --background: 240 4.8% 95.9%; /* #f0f2f5 */
+  --foreground: 20 14.3% 4.1%; /* #050505 */
+  --muted: 210 40% 98%; /* #f8f9fa */
+  --muted-foreground: 215.4 16.3% 46.9%; /* #65676b */
+  --popover: 0 0% 100%; /* #ffffff */
+  --popover-foreground: 20 14.3% 4.1%; /* #050505 */
+  --card: 0 0% 100%; /* #ffffff */
+  --card-foreground: 20 14.3% 4.1%; /* #050505 */
+  --border: 220 13% 91%; /* #dddfe2 */
+  --input: 220 13% 91%; /* #dddfe2 */
+  --primary: 214 100% 59%; /* #1877f2 */
+  --primary-foreground: 210 40% 98%; /* #ffffff */
+  --secondary: 210 40% 96%; /* #f0f2f5 */
+  --secondary-foreground: 24 9.8% 10%; /* #1a1a1a */
+  --accent: 210 40% 96%; /* #f0f2f5 */
+  --accent-foreground: 24 9.8% 10%; /* #1a1a1a */
+  --destructive: 0 84.2% 60.2%; /* #ef4444 */
+  --destructive-foreground: 60 9.1% 97.8%; /* #fefefe */
+  --ring: 214 100% 59%; /* #1877f2 */
+  --radius: 0.5rem;
+
+  /* Custom CSS variables for compatibility */
+  --color-text: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-surface: var(--card);
+  --color-background: var(--background);
+  --color-border: var(--border);
+  --color-hover: hsl(var(--muted));
+  --primary-color: hsl(var(--primary));
+  --primary-hover: hsl(214 100% 55%); /* #166fe5 */
+}
+
+.dark {
+  --background: 222.2 84% 4.9%; /* #0c0c0c */
+  --foreground: 210 40% 98%; /* #e4e6eb */
+  --muted: 217.2 32.6% 17.5%; /* #242526 */
+  --muted-foreground: 215 20.2% 65.1%; /* #b0b3b8 */
+  --popover: 222.2 84% 4.9%; /* #18191a */
+  --popover-foreground: 210 40% 98%; /* #e4e6eb */
+  --card: 222.2 84% 4.9%; /* #242526 */
+  --card-foreground: 210 40% 98%; /* #e4e6eb */
+  --border: 217.2 32.6% 17.5%; /* #3e4042 */
+  --input: 217.2 32.6% 17.5%; /* #3e4042 */
+  --primary: 214 100% 59%; /* #1877f2 */
+  --primary-foreground: 222.2 84% 4.9%; /* #18191a */
+  --secondary: 217.2 32.6% 17.5%; /* #3a3a3a */
+  --secondary-foreground: 210 40% 98%; /* #e4e6eb */
+  --accent: 217.2 32.6% 17.5%; /* #3a3a3a */
+  --accent-foreground: 210 40% 98%; /* #e4e6eb */
+  --destructive: 0 62.8% 30.6%; /* #7f1d1d */
+  --destructive-foreground: 210 40% 98%; /* #e4e6eb */
+  --ring: 214 100% 59%; /* #1877f2 */
+
+  /* Custom CSS variables for dark mode */
+  --color-text: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-surface: var(--card);
+  --color-background: var(--background);
+  --color-border: var(--border);
+  --color-hover: hsl(var(--muted));
+  --primary-color: hsl(var(--primary));
+  --primary-hover: hsl(214 100% 55%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+@layer components {
+  /* Story ring gradient */
+  .story-ring {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    padding: 3px;
+    border-radius: 50%;
+  }
+  
+  .story-inner {
+    background: white;
+    border-radius: 50%;
+    padding: 2px;
+  }
+  
+  .dark .story-inner {
+    background: hsl(var(--card));
+  }
+
+  /* Post shadow */
+  .post-shadow {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Animations */
+  .fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { 
+      opacity: 0; 
+      transform: translateY(10px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+
+  .hover-scale {
+    transition: transform 0.2s ease;
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  /* Text truncation utilities */
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Canvas container for story editor */
+  .canvas-container {
+    border: 2px dashed hsl(var(--border));
+    border-radius: 12px;
+    background: hsl(var(--muted));
+  }
+
+  /* Notification animation */
+  .notification-badge {
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { 
+      opacity: 1; 
+    }
+    50% { 
+      opacity: 0.7; 
+    }
+  }
+}
+
+/* Gradient backgrounds for category cards */
+.gradient-geek {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-sports {
+  background: linear-gradient(135deg, #06beb6 0%, #48b1bf 100%);
+}
+
+.gradient-music {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ffa726 100%);
+}
+
+.gradient-math {
+  background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+}
+
+.gradient-health {
+  background: linear-gradient(135deg, #96e6a1 0%, #d4fc79 100%);
+}
+
+.gradient-tech {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Dark mode support for custom elements */
+.dark .canvas-container {
+  background: hsl(var(--muted));
+  border-color: hsl(var(--border));
+}
+
+/* Ensure proper contrast in dark mode */
+.dark .story-inner {
+  background: hsl(var(--background));
+}
