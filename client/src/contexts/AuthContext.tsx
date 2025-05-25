@@ -52,48 +52,53 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      setFirebaseUser(firebaseUser);
-      
-      if (firebaseUser) {
-        try {
-          // Get user data from Firestore
-          const userDoc = await getDoc(doc(db, 'users', firebaseUser.uid));
-          if (userDoc.exists()) {
-            const userData = userDoc.data() as User;
-            setUser(userData);
-            wsManager.setUser(userData);
-          } else {
-            // Create user document if it doesn't exist
-            const newUser: User = {
-              id: 0, // Will be set by database
-              uid: firebaseUser.uid,
-              email: firebaseUser.email!,
-              name: firebaseUser.displayName?.split(' ')[0] || '',
-              surname: firebaseUser.displayName?.split(' ').slice(1).join(' ') || '',
-              photoURL: firebaseUser.photoURL,
-              gender: null,
-              birthDate: null,
-              createdAt: new Date(),
-            };
-            
-            await setDoc(doc(db, 'users', firebaseUser.uid), {
-              ...newUser,
-              createdAt: serverTimestamp(),
-            });
-            
-            setUser(newUser);
-            wsManager.setUser(newUser);
+      try {
+        setFirebaseUser(firebaseUser);
+        
+        if (firebaseUser) {
+          try {
+            // Get user data from Firestore
+            const userDoc = await getDoc(doc(db, 'users', firebaseUser.uid));
+            if (userDoc.exists()) {
+              const userData = userDoc.data() as User;
+              setUser(userData);
+              wsManager.setUser(userData);
+            } else {
+              // Create user document if it doesn't exist
+              const newUser: User = {
+                id: 0, // Will be set by database
+                uid: firebaseUser.uid,
+                email: firebaseUser.email!,
+                name: firebaseUser.displayName?.split(' ')[0] || '',
+                surname: firebaseUser.displayName?.split(' ').slice(1).join(' ') || '',
+                photoURL: firebaseUser.photoURL,
+                gender: null,
+                birthDate: null,
+                createdAt: new Date(),
+              };
+              
+              await setDoc(doc(db, 'users', firebaseUser.uid), {
+                ...newUser,
+                createdAt: serverTimestamp(),
+              });
+              
+              setUser(newUser);
+              wsManager.setUser(newUser);
+            }
+          } catch (error) {
+            console.error('Error fetching user data:', error);
+            setUser(null);
           }
-        } catch (error) {
-          console.error('Error fetching user data:', error);
+        } else {
           setUser(null);
+          wsManager.setUser(null);
         }
-      } else {
-        setUser(null);
-        wsManager.setUser(null);
+        
+        setLoading(false);
+      } catch (error) {
+        console.error('Auth state change error:', error);
+        setLoading(false);
       }
-      
-      setLoading(false);
     });
 
     return unsubscribe;
