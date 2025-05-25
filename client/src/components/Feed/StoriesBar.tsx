@@ -26,6 +26,10 @@ interface StoriesBarProps {
 export function StoriesBar({ stories, onCreateStory, onViewStory }: StoriesBarProps) {
   const { user } = useAuth();
 
+  if (!user) {
+    return null;
+  }
+
   return (
     <Card className="w-full shadow-sm">
       <CardContent className="p-4">
