@@ -26,8 +26,18 @@ interface StoriesBarProps {
 export function StoriesBar({ stories, onCreateStory, onViewStory }: StoriesBarProps) {
   const { user } = useAuth();
 
-  if (!user) {
-    return null;
+  if (!user || !user.name) {
+    return (
+      <Card className="w-full shadow-sm">
+        <CardContent className="p-4">
+          <div className="flex items-center justify-center py-8">
+            <div className="text-center text-muted-foreground">
+              <p className="text-sm">Carregando stories...</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    );
   }
 
   return (
@@ -43,9 +53,9 @@ export function StoriesBar({ stories, onCreateStory, onViewStory }: StoriesBarPr
             >
               <div className="relative">
                 <Avatar className="h-16 w-16 ring-2 ring-dashed ring-primary">
-                  <AvatarImage src={user?.photoURL || ""} alt={user?.name} />
+                  <AvatarImage src={user.photoURL || ""} alt={user.name || "Usuário"} />
                   <AvatarFallback>
-                    {user?.name?.charAt(0)?.toUpperCase() || 'U'}
+                    {user.name?.charAt(0)?.toUpperCase() || 'U'}
                   </AvatarFallback>
                 </Avatar>
                 <div className="absolute bottom-0 right-0 bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center">
